@@ -5,10 +5,15 @@ import UserList from '../../components/Users/UserList/userList';
 const UserPage = () => {
   const [usersList, setUsersList] = useState([]);
 
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [...prevUsersList, {name: uName, age: uAge, id: Math.random().toString()}]
+    })
+  }
+
   return (
     <div>
-    
-      <AddUser />
+      <AddUser onAddUser={addUserHandler}/>
       <UserList users = {usersList}/>
     </div>
   )

@@ -12,7 +12,7 @@ const AddUserCard = styled(Card)`
     max-width: 40rem;
 `;
 
-const AddUser = () => {
+const AddUser = ({onAddUser}) => {
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
     const [error, setError] = useState()
@@ -42,6 +42,7 @@ const AddUser = () => {
             return;
         }
 
+        onAddUser(enteredUsername, enteredAge)
         setEnteredUsername('');
         setEnteredAge('');
     }

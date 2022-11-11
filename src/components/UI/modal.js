@@ -16,8 +16,8 @@ const Backdrop = styled.div`
 const StyledModal = styled(Card)`
     position: fixed;
     top: 30vh;
-    left: 10%;
-    width: 80%;
+    left: 27.8%;
+    width: 40rem;
     z-index: 100;
     overflow: hidden;
 `;
