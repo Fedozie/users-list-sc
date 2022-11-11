@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./components/styles/globalStyles";
+import UserPage from "./pages/users/userPage";
 
 function App() {
+  const theme = {
+    colors: {
+      white: "#ffffff",
+      mainPurple: "#4f005f",
+      hoverPurple: "#741188",
+      bg: "#1f1f1f"
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className="App">
+        <UserPage />
+      </div>
+    </ThemeProvider>
+
   );
 }
 
