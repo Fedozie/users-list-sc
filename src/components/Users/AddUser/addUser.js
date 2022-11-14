@@ -4,6 +4,7 @@ import Card from '../../UI/card';
 import Input from '../../UI/input';
 import Button from '../../UI/button';
 import Modal from '../../UI/modal';
+import Wrapper from '../../helpers/wrapper';
 
 const AddUserCard = styled(Card)`
     margin: 2rem auto;
@@ -52,12 +53,12 @@ const AddUser = ({onAddUser}) => {
     }
 
     return (
-        <div>
+        <Wrapper>
             {error &&
                 <Modal
                     title={error.title}
                     message={error.message}
-                    errorFxn={errorHandler}
+                    backFxn={errorHandler}
                 />}
             <AddUserCard>
                 <form onSubmit={addUserHandler}>
@@ -80,7 +81,7 @@ const AddUser = ({onAddUser}) => {
                     </Button>
                 </form>
             </AddUserCard>
-        </div>
+        </Wrapper>
     );
 }
 

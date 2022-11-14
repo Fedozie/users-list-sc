@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "./button";
 import Card from "./card";
+import Wrapper from "../helpers/wrapper";
 
 const Backdrop = styled.div`
     position: fixed;
@@ -42,9 +43,9 @@ const ModalFooter = styled.footer`
     justify-content: flex-end;
 `;
 
-const Modal = ({title, message, errorFxn}) => {
+const Modal = ({title, message, backFxn}) => {
     return (
-        <div>
+        <Wrapper>
             <Backdrop/>
             <StyledModal>
                 <ModalHeader>
@@ -54,10 +55,10 @@ const Modal = ({title, message, errorFxn}) => {
                     <p>{message}</p>
                 </ModalContent>
                 <ModalFooter>
-                    <Button onClick={errorFxn}>Go Back</Button>
+                    <Button onClick={backFxn}>Go Back</Button>
                 </ModalFooter>
             </StyledModal>
-        </div>
+        </Wrapper>
     )
 };
 

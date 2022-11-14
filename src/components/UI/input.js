@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Label from './label';
+import Wrapper from '../helpers/wrapper';
 
 const InputField = styled.input`
     font: inherit;
@@ -18,7 +19,7 @@ const InputField = styled.input`
 
 const Input = ({type, id, value, changeHandler, label}) => {
   return (
-    <div>
+    <Wrapper>
         <Label 
           children={label}
           htmlFor = {id}
@@ -29,7 +30,7 @@ const Input = ({type, id, value, changeHandler, label}) => {
           value = {value}
           onChange = {changeHandler}
         />
-    </div>
+    </Wrapper>
   )
 }
 

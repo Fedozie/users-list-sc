@@ -1,21 +1,22 @@
 import React, {useState} from 'react';
 import AddUser from '../../components/Users/AddUser/addUser';
 import UserList from '../../components/Users/UserList/userList';
+import Wrapper from '../../components/helpers/wrapper';
 
 const UserPage = () => {
-  const [usersList, setUsersList] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   const addUserHandler = (uName, uAge) => {
-    setUsersList((prevUsersList) => {
+    setUserList((prevUsersList) => {
       return [...prevUsersList, {name: uName, age: uAge, id: Math.random().toString()}]
     })
   }
 
   return (
-    <div>
-      <AddUser onAddUser={addUserHandler}/>
-      <UserList users = {usersList}/>
-    </div>
+    <Wrapper>
+      <AddUser onAddUser={addUserHandler} />
+      <UserList users = {userList}/>
+    </Wrapper>
   )
 }
 
