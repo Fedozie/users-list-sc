@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import DataContext from '../../../context/dataContext';
 import styled from 'styled-components';
 import Card from '../../UI/card';
 import Input from '../../UI/input';
@@ -6,14 +7,10 @@ import Button from '../../UI/button';
 import Modal from '../../UI/modal';
 import Wrapper from '../../helpers/wrapper';
 
-const AddUserCard = styled(Card)`
-    margin: 2rem auto;
-    padding: 1rem;
-    width: 90%;
-    max-width: 40rem;
-`;
 
-const AddUser = ({onAddUser}) => {
+
+const AddUser = () => {
+    const {setList} = useContext(DataContext)
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
     const [error, setError] = useState()
@@ -24,6 +21,12 @@ const AddUser = ({onAddUser}) => {
 
     const ageHandler = (e) => {
         setEnteredAge(e.target.value);
+    }
+
+    const onAddUser = (uNmae, uAge) => {
+        setList((prevUserList) => {
+            return [...prevUserList, {name: uNmae, age: uAge, id: Math.random().toString()}]
+        })
     }
 
     const addUserHandler = (e) => {
@@ -86,3 +89,10 @@ const AddUser = ({onAddUser}) => {
 }
 
 export default AddUser;
+
+const AddUserCard = styled(Card)`
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+`;

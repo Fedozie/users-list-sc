@@ -2,7 +2,9 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./components/styles/globalStyles";
-import UserPage from "./pages/users/userPage";
+import { DataProvider } from "./context/dataContext";
+import AppRoutes from "./routes/appRoutes";
+
 
 function App() {
   const theme = {
@@ -15,13 +17,14 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <div className="App">
-        <UserPage />
-      </div>
-    </ThemeProvider>
-
+    <DataProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <div className="App">
+          <AppRoutes />
+        </div>
+      </ThemeProvider>
+    </DataProvider>
   );
 }
 

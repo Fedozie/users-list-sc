@@ -1,21 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../components/UI/button';
 import AddUser from '../../components/Users/AddUser/addUser';
 import UserList from '../../components/Users/UserList/userList';
 import Wrapper from '../../components/helpers/wrapper';
 
 const UserPage = () => {
-  const [userList, setUserList] = useState([]);
-
-  const addUserHandler = (uName, uAge) => {
-    setUserList((prevUsersList) => {
-      return [...prevUsersList, {name: uName, age: uAge, id: Math.random().toString()}]
-    })
-  }
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
-      <AddUser onAddUser={addUserHandler} />
-      <UserList users = {userList}/>
+      <AddUser />
+      <UserList/>
+      <Button onClick = {() => navigate("/trial")}>Go to Trial Page</Button>
     </Wrapper>
   )
 }
